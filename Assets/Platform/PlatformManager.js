@@ -19,6 +19,8 @@ var physicMaterials : PhysicMaterial[];
 private var nextPosition : Vector3;
 private var objectQueue : Queue.<Transform>;
 
+public var booster : Booster;
+
 function Start () {
 
 	GameEventManager.GameStart += GameStart;
@@ -57,6 +59,7 @@ function Recycle(){
 		var position : Vector3 = nextPosition;
 		position.x += scale.x * 0.5;
 		position.y += scale.y * 0.5;
+		booster.SpawnIfAvailable(position);
 
 		var o : Transform = objectQueue.Dequeue();
 		o.localScale = scale;
