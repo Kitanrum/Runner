@@ -7,6 +7,7 @@ public var jumpVelocity : Vector3;
 public var boostVelocity : Vector3;
 public var gameOverY: float;
 private var startPosition : Vector3;
+public var jump : AudioSource;
 
 private static var boosts : int;
 
@@ -24,7 +25,9 @@ function Start () {
 function Update () {
 
 	if(Input.GetButtonDown("Jump")){
+
 		if(touchingPlatform){
+			jump.Play();
 			GetComponent.<Rigidbody>().AddForce(jumpVelocity, ForceMode.VelocityChange);
 			touchingPlatform = false;
 		}

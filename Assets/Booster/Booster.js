@@ -5,6 +5,8 @@ public var rotationVelocity : Vector3;
 public var recycleOffset : float;
 public var spawnChance : float;
 
+//public var boost : AudioSource;
+
 function Start () {
 	GameEventManager.GameOver += GameOver;
 	gameObject.SetActive(false);
@@ -35,6 +37,8 @@ private function GameOver() {
 }
 
 function OnTriggerEnter(){
+	GetComponent.<AudioSource>().Play();
 	Runner.AddBoost();
 	gameObject.SetActive(false);
+
 }
