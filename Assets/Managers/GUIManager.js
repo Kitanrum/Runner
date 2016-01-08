@@ -6,6 +6,7 @@ public var runnerText : UI.Text = GetComponent("Runner Text");
 public var boostsText : UI.Text = GetComponent("Boosts Text");
 public var distanceText : UI.Text = GetComponent("Distance Text");
 
+public var BG : AudioClip;
 private static var instance : GUIManager;
 
 function Start () {
@@ -20,6 +21,7 @@ function Start () {
 function Update () {
 	if(Input.GetButtonDown("Jump")){
 		GameEventManager.TriggerGameStart();
+		GetComponent.<AudioSource>().Play();
 	}
 }
 
@@ -28,6 +30,8 @@ private function GameStart(){
 	instructionText.enabled = false;
 	runnerText.enabled = false;
 	enabled = false;
+	var BG : AudioSource = GetComponent.<AudioSource>();
+	BG.Play();
 }
 
 private function GameOver(){
